@@ -108,7 +108,10 @@ textarea {
 .media-frame-inner {
   position: absolute;
   inset: 0;
-  will-change: transform;
+}
+
+.media-frame img {
+  display: block;
 }
 
 @media (prefers-reduced-motion: no-preference) {

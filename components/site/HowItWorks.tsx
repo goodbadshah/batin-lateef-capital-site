@@ -2,9 +2,14 @@
 
 import { Fragment, useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { howItWorks } from "@/lib/copy";
 import { flowIcons } from "./FlowStepIcons";
 import { ScrollReveal } from "./ScrollReveal";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const REVEAL_START = "top 55%";
 
 function FlowConnector({
   direction,
@@ -33,6 +38,23 @@ function FlowConnector({
   );
 }
 
+function revealConnector(section: HTMLElement, index: number) {
+  section.querySelectorAll<HTMLElement>(`[data-flow-connector-index="${index}"]`).forEach((connector) => {
+    const line = connector.querySelector<HTMLElement>("[data-flow-connector-line]");
+    if (!line) return;
+
+    const isVertical = connector.dataset.flowConnectorVertical === "true";
+
+    gsap.to(connector, { opacity: 1, duration: 0.2 });
+    gsap.to(
+      line,
+      isVertical
+        ? { scaleY: 1, duration: 0.35, ease: "power2.out" }
+        : { scaleX: 1, duration: 0.35, ease: "power2.out" },
+    );
+  });
+}
+
 export function HowItWorks() {
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -41,14 +63,13 @@ export function HowItWorks() {
     if (!section) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
-
     const steps = section.querySelectorAll<HTMLElement>("[data-flow-step]");
     const connectors = section.querySelectorAll<HTMLElement>("[data-flow-connector]");
-    let observer: IntersectionObserver | null = null;
+
+    if (reduced) return;
 
     const ctx = gsap.context(() => {
-      gsap.set(steps, { y: 24 });
+      gsap.set(steps, { y: 28 });
       gsap.set(connectors, { opacity: 0 });
 
       connectors.forEach((connector) => {
@@ -63,64 +84,31 @@ export function HowItWorks() {
         });
       });
 
-      let played = false;
+      const revealStep = (step: HTMLElement, index: number) => {
+        gsap.to(step, { y: 0, duration: 0.55, ease: "power3.out" });
+        if (index > 0) revealConnector(section, index - 1);
+      };
 
-      const play = () => {
-        if (played) return;
-        played = true;
+      steps.forEach((step, index) => {
+        const pastCenter = step.getBoundingClientRect().top < window.innerHeight * 0.55;
 
-        const tl = gsap.timeline();
+        if (pastCenter || window.location.hash === `#${howItWorks.id}`) {
+          revealStep(step, index);
+          return;
+        }
 
-        steps.forEach((step, index) => {
-          tl.to(step, { y: 0, duration: 0.55, ease: "power3.out" }, index === 0 ? 0 : "-=0.05");
-
-          if (index >= steps.length - 1) return;
-
-          section.querySelectorAll<HTMLElement>(`[data-flow-connector-index="${index}"]`).forEach((connector) => {
-            const line = connector.querySelector<HTMLElement>("[data-flow-connector-line]");
-            if (!line) return;
-
-            const isVertical = connector.dataset.flowConnectorVertical === "true";
-
-            tl.to(connector, { opacity: 1, duration: 0.2 }, "-=0.25");
-            tl.to(
-              line,
-              isVertical
-                ? { scaleY: 1, duration: 0.35, ease: "power2.out" }
-                : { scaleX: 1, duration: 0.35, ease: "power2.out" },
-              "-=0.1",
-            );
-          });
+        ScrollTrigger.create({
+          trigger: step,
+          start: REVEAL_START,
+          once: true,
+          onEnter: () => revealStep(step, index),
         });
-      };
+      });
 
-      const isInView = () => {
-        const rect = section.getBoundingClientRect();
-        return rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
-      };
-
-      if (isInView() || window.location.hash === `#${howItWorks.id}`) {
-        play();
-        return;
-      }
-
-      observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry?.isIntersecting) {
-            play();
-            observer?.disconnect();
-          }
-        },
-        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
-      );
-
-      observer.observe(section);
+      ScrollTrigger.refresh();
     }, section);
 
-    return () => {
-      observer?.disconnect();
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (

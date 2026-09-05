@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { portfolio } from "@/lib/copy";
+import { MediaFrame } from "@/components/site/MediaFrame";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function PortfolioCarousel() {
@@ -69,15 +69,12 @@ export function PortfolioCarousel() {
                 onClick={() => toggle(index)}
                 className="w-full text-left"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Image
-                    src={entry.image}
-                    alt={`${entry.name}, ${entry.category}`}
-                    fill
-                    className="object-cover transition-transform duration-500"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                </div>
+                <MediaFrame
+                  src={entry.image}
+                  alt={`${entry.name}, ${entry.category}`}
+                  className="aspect-[4/3]"
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                />
                 <div className="p-5 sm:p-6">
                   <p className="text-[10px] uppercase tracking-[0.2em] text-ruby">{entry.layer}</p>
                   <h3 className="mt-2 font-serif text-2xl text-ink sm:text-3xl">{entry.name}</h3>

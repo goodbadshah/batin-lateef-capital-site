@@ -64,7 +64,7 @@ export const howItWorks = {
       number: 3,
       title: "Treaty Co Production",
       description:
-        "Canada and South Africa enter a treaty compliant co production structure. The CPTC, provincial film tax credits, and the DTIC Film and Television Production Incentive are filed pre production and certified post delivery.",
+        "Productions qualify as national in Canada and South Africa under the modernized audiovisual co production treaty. CPTC, provincial credits, CMF, and DTIC incentives are filed pre production and certified post delivery.",
     },
     {
       id: "production-delivery",
