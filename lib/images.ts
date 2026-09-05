@@ -32,6 +32,6 @@ export const mediaStrips = [
 ] as const;
 
 export const heroImage = {
-  src: "/images/location-production.png",
-  alt: "Film crew on location at dusk",
+  src: "/images/hero-hijabi-director.png",
+  alt: "Hijabi film director reviewing a monitor on set with crew",
 } as const;

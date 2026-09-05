@@ -1,20 +1,20 @@
 import { About } from "@/components/site/About";
 import { Commit } from "@/components/site/Commit";
 import { Footer } from "@/components/site/Footer";
-import { FundPartners } from "@/components/site/FundPartners";
 import { Hero } from "@/components/site/Hero";
 import { Metrics } from "@/components/site/Metrics";
 import { ManifestoQuote } from "@/components/site/ManifestoQuote";
 import { ParallaxMedia } from "@/components/site/ParallaxMedia";
+import { ClosingSection } from "@/components/site/ClosingSection";
 import { PortfolioCarousel } from "@/components/site/PortfolioCarousel";
-import { Sidebar } from "@/components/site/Sidebar";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { mediaStrips } from "@/lib/images";
 
 export default function Home() {
   return (
     <>
-      <Sidebar />
-      <div className="main-shell min-h-[100dvh] bg-beige pt-14 lg:pt-0">
+      <SiteHeader />
+      <div className="min-h-[100dvh] bg-beige pt-14">
         <main>
           <Hero />
           <ParallaxMedia strip={mediaStrips[0]} />
@@ -26,7 +26,7 @@ export default function Home() {
           <Metrics />
           <ParallaxMedia strip={mediaStrips[3]} />
           <PortfolioCarousel />
-          <FundPartners />
+          <ClosingSection />
         </main>
         <Footer />
       </div>

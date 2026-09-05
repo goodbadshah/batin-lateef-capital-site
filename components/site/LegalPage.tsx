@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/site/Footer";
-import { Sidebar } from "@/components/site/Sidebar";
+import { SiteHeader } from "@/components/site/SiteHeader";
 import { wordmark } from "@/lib/copy";
 
 export function LegalPage({
@@ -12,8 +12,8 @@ export function LegalPage({
 }) {
   return (
     <>
-      <Sidebar />
-      <div className="main-shell min-h-[100dvh] bg-beige pt-14 lg:pt-0">
+      <SiteHeader />
+      <div className="min-h-[100dvh] bg-beige pt-14">
         <main className="mx-auto max-w-[760px] px-6 py-16 sm:px-10 lg:py-24">
           <p className="mb-6 text-sm text-muted">
             <Link href="/" className="hover:text-ruby">
