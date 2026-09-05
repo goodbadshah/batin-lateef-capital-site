@@ -1,41 +1,60 @@
+"use client";
+
+import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
+import { useState } from "react";
 import { architecture } from "@/lib/copy";
-import { Reveal } from "./Reveal";
 
 export function Architecture() {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="structure" className="scroll-mt-20 border-b border-line">
-      <div className="mx-auto max-w-[1400px] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        <Reveal>
-          <h2 className="headline-balance font-serif text-3xl text-heading md:text-4xl">
-            {architecture.heading}
-          </h2>
-          <p className="mt-3 max-w-[60ch] text-sm text-silver">{architecture.note}</p>
-        </Reveal>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3">
+    <section id={architecture.id} className="section-anchor border-t border-line">
+      <div className="mx-auto max-w-[1600px] px-4 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <h2 className="font-serif text-4xl text-heading md:text-5xl">{architecture.heading}</h2>
+          <p className="mt-4 max-w-[58ch] text-sm text-silver">{architecture.note}</p>
+        </motion.div>
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3">
           {architecture.metrics.map((metric, i) => (
-            <Reveal
+            <motion.div
               key={metric.value}
-              delay={i * 0.05}
-              className={`border border-line px-6 py-10 ${i > 0 ? "border-t-0 md:border-t md:border-l-0" : ""}`}
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className={`border border-line px-6 py-12 md:px-8 ${i > 0 ? "border-t-0 md:border-t md:border-l-0" : ""}`}
             >
-              <p className="font-sans text-5xl font-medium tabular-nums tracking-tight text-gold md:text-6xl">
+              <p className="font-sans text-[clamp(2.5rem,5vw,4rem)] font-medium tabular-nums leading-none tracking-tight text-gold">
                 {metric.value}
               </p>
-              <p className="mt-4 max-w-[28ch] text-sm leading-relaxed text-silver">{metric.caption}</p>
-            </Reveal>
+              <p className="mt-5 max-w-[24ch] text-sm leading-relaxed text-silver">{metric.caption}</p>
+            </motion.div>
           ))}
         </div>
-        <Reveal delay={0.08} className="mt-10 border border-line bg-[color-mix(in_oklch,var(--color-gold)_6%,var(--color-obsidian))] p-6 md:p-10">
-          <h3 className="font-serif text-2xl text-heading">{architecture.waterfallHeading}</h3>
-          <ol className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 border border-line bg-obsidian-elevated p-8 md:p-12"
+        >
+          <h3 className="font-serif text-2xl text-heading md:text-3xl">{architecture.waterfallHeading}</h3>
+          <div className="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2">
             {architecture.priorities.map((item) => (
-              <li key={item.label} className="max-w-[48ch]">
+              <div key={item.label}>
                 <p className="text-sm font-medium text-gold">{item.label}</p>
                 <p className="mt-2 text-base leading-relaxed text-heading">{item.body}</p>
-              </li>
+              </div>
             ))}
-          </ol>
-        </Reveal>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

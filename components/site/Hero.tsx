@@ -1,53 +1,85 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { hero } from "@/lib/copy";
+import { MagneticButton } from "./MagneticButton";
 import { useModals } from "./ModalProvider";
 
 export function Hero() {
   const reduce = useReducedMotion();
   const { openProspectus } = useModals();
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.35]);
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden border-b border-line">
-      <div className="mx-auto grid min-h-[100dvh] max-w-[1400px] grid-cols-1 items-center gap-10 px-4 pb-12 pt-16 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pt-20 lg:pb-16">
+    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden">
+      <div className="mx-auto grid min-h-[100dvh] max-w-[1600px] grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
         <motion.div
-          className="lg:col-span-7"
-          initial={reduce ? false : { opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={reduce ? undefined : { y: textY, opacity }}
+          className="relative z-10 flex flex-col justify-end px-4 pb-14 pt-24 sm:px-8 lg:px-12 lg:pb-20 lg:pt-24"
         >
-          <h1 className="headline-balance font-serif text-4xl leading-[1.12] text-heading pb-1 md:text-5xl lg:text-6xl">
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6 max-w-[14ch] font-serif text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.08] text-heading pb-1 headline-balance"
+          >
             {hero.headline}
-          </h1>
-          <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-silver md:text-[17px]">
+          </motion.p>
+          <motion.p
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-[42ch] text-[15px] leading-relaxed text-silver md:text-base"
+          >
             {hero.subhead}
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <button
-              type="button"
+          </motion.p>
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+          >
+            <MagneticButton
               onClick={openProspectus}
-              className="whitespace-nowrap bg-gold px-5 py-3 text-sm font-medium text-obsidian transition hover:bg-gold/90 active:scale-[0.98]"
+              className="bg-gold px-6 py-3.5 text-sm font-medium text-obsidian hover:bg-gold-dim"
             >
               {hero.primaryCta}
-            </button>
-            <a
+            </MagneticButton>
+            <MagneticButton
               href="#structure"
-              className="inline-flex items-center justify-center whitespace-nowrap border border-gold px-5 py-3 text-sm font-medium text-gold transition hover:bg-gold/10 active:scale-[0.98]"
+              className="border border-gold/80 px-6 py-3.5 text-sm font-medium text-gold hover:bg-gold/10"
             >
               {hero.secondaryCta}
-            </a>
-          </div>
+            </MagneticButton>
+          </motion.div>
         </motion.div>
-        <div className="relative aspect-[16/10] w-full overflow-hidden border border-line lg:col-span-5 lg:aspect-auto lg:min-h-[52vh]">
-          <Image
-            src="/images/hero-soundstage.png"
-            alt="Empty nocturnal soundstage with sparse champagne practical lighting."
-            fill
-            priority
-            sizes="(min-width: 1024px) 42vw, 100vw"
-            className="object-cover"
+
+        <div className="relative min-h-[42vh] lg:min-h-[100dvh]">
+          <motion.div
+            style={reduce ? undefined : { y: imageY }}
+            className="cinematic-frame absolute inset-0 lg:inset-y-0 lg:right-0 lg:left-[-8vw]"
+          >
+            <Image
+              src="/images/hero-dock.png"
+              alt="Cinematographer beside anamorphic glass at blue hour on a working dock."
+              fill
+              priority
+              sizes="(min-width: 1024px) 55vw, 100vw"
+              className="object-cover object-[center_35%]"
+            />
+          </motion.div>
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-transparent lg:from-obsidian lg:via-obsidian/40"
+            aria-hidden
           />
         </div>
       </div>

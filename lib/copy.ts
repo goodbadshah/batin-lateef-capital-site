@@ -1,19 +1,64 @@
 export const firm = "Batin Lateef Capital";
-export const wordmark = "BATIN LATEEF CAPITAL";
+export const wordmark = "BATIN LATEEF";
 
 export const nav = {
-  thesis: "Thesis",
+  mission: "Mission",
+  manifesto: "Manifesto",
   structure: "Structure",
   contact: "Contact",
   portal: "Investor Portal",
 } as const;
 
 export const hero = {
-  headline: "Talent lives everywhere. Capital architecture does not.",
+  headline: "The depth is hidden. The execution is gentle.",
   subhead:
-    "Batin Lateef Capital is a multi-jurisdictional media fund managing risk, optimizing arbitrage, and financing premium commercial cinema with profound intellectual depth.",
+    "A specialized multi-jurisdictional media fund financing high-yield, four-quadrant global film and television content.",
   primaryCta: "Request Investor Prospectus",
   secondaryCta: "View Fund Architecture",
+} as const;
+
+export const mission = {
+  id: "mission",
+  label: "Investor-Facing",
+  heading: "Corporate Mission",
+  body: "Batin Lateef is a specialized multi-jurisdictional media fund dedicated to financing high-yield, four-quadrant global film and television content. By strategically arbitrage-stacking Canadian and South African production incentives, we de-risk private equity exposure to 20-30% of project budgets while targeting a consistent 12-15% ROI, delivering premium commercial entertainment with profound character depth.",
+} as const;
+
+export const manifesto = {
+  id: "manifesto",
+  label: "Creator-Facing",
+  heading: "Creative Manifesto",
+  pullQuote: "Empathetic visibility through the art of the unsaid.",
+  body: "Batin Lateef champions empathetic visibility through the art of the unsaid. We reject tokenism and overt didactic storytelling. Instead, we embed the rich, philosophical, and ethical architecture of Shia Islamic heritage into the quiet spaces of mainstream cinema, through a character's background choices, ancestral subtext, and subtle moral compasses. The depth is hidden (Batin); the execution is gentle and nuanced (Lateef).",
+  etymology: {
+    batin: "Hidden depth.",
+    lateef: "Gentle execution.",
+  },
+} as const;
+
+export const thesis = {
+  id: "thesis",
+  heading: "Execution Lanes",
+  pillars: [
+    {
+      title: "Treaty Arbitrage",
+      body: "Canada and South Africa co-production treaties stacked to compress private equity into 20-30% of budget.",
+      image: "/images/treaty-aerial.png",
+      alt: "Blue-hour aerial landscape evoking dual-hemisphere co-production geography.",
+    },
+    {
+      title: "Four-Quadrant Genre",
+      body: "Sci-fi, thriller, and action slates packaged for international streaming with studio-grade commercial velocity.",
+      image: "/images/hero-dock.png",
+      alt: "Cinematographer at dockside blue hour beside anamorphic glass.",
+    },
+    {
+      title: "Empathetic Visibility",
+      body: "Philosophical subtext carried in character choice, not lecture. Heritage as atmosphere, not annotation.",
+      image: "/images/manifesto-film.png",
+      alt: "Hands loading 35mm film magazine on a cinema camera.",
+    },
+  ],
 } as const;
 
 export const portalModal = {
@@ -22,65 +67,49 @@ export const portalModal = {
   close: "Close",
 } as const;
 
-export const thesis = {
-  heading: "The Core Thesis",
-  pillars: [
-    {
-      title: "Multi-Jurisdictional Arbitrage",
-      body: "Leveraging Canada & South Africa Audiovisual Co-production treaties to systematically stack regional and federal soft money.",
-    },
-    {
-      title: "Premium Global Genre Films",
-      body: "Financing four-quadrant Sci-Fi, Thrillers, and Action packaged with elite creative oversight for international streaming markets.",
-    },
-    {
-      title: "Empathetic Visibility",
-      body: "Embedding rich, philosophical, and ethical subtext into mainstream characters, prioritizing narrative character depth over didactic storytelling.",
-    },
-  ],
-} as const;
-
 export const architecture = {
-  heading: "Financial Architecture & De-Risking",
-  note: "Target architecture. Illustrative structure, not audited track record.",
+  id: "structure",
+  heading: "Capital Architecture",
+  note: "Target fund design. Illustrative mechanics, not audited performance.",
   metrics: [
     {
+      value: "20-30%",
+      caption: "Private equity exposure after incentive stacking",
+    },
+    {
+      value: "12-15%",
+      caption: "Target ROI on deployed capital",
+    },
+    {
       value: "4.0x",
-      caption: "Production Leverage via Treaty Stacking",
-    },
-    {
-      value: "75%",
-      caption: "Soft Money & Market Presales Protection",
-    },
-    {
-      value: "25%",
-      caption: "Maximum Private Equity Exposure",
+      caption: "Production leverage via treaty stacking",
     },
   ],
-  waterfallHeading: "Recoupment Waterfall Mechanics",
+  waterfallHeading: "Recoupment Waterfall",
   priorities: [
     {
-      label: "Priority 1",
-      body: "Senior Debt Clearance via territorial license fees.",
+      label: "Senior debt",
+      body: "Territorial license fees clear senior debt first.",
     },
     {
-      label: "Priority 2",
-      body: "100% Principal Recoupment to Equity Investors.",
+      label: "Principal",
+      body: "100% principal recoupment to equity investors.",
     },
     {
-      label: "Priority 3",
-      body: "15% Preferred Dividend Hurdle.",
+      label: "Preferred hurdle",
+      body: "15% preferred dividend hurdle before backend participation.",
     },
     {
-      label: "Priority 4",
-      body: "50/50 Long-tail Backend Split.",
+      label: "Backend",
+      body: "50/50 long-tail split after hurdles are met.",
     },
   ],
 } as const;
 
 export const contact = {
-  heading: "Qualified capital. Global film markets.",
-  body: "Prospectus materials are released only after institutional qualification. Use the same request channel as the fund architecture above.",
+  id: "contact",
+  heading: "Qualified capital only.",
+  body: "Prospectus materials release after institutional qualification at global film markets and by private introduction.",
 } as const;
 
 export const prospectus = {
@@ -103,7 +132,7 @@ export const prospectus = {
   submitting: "Submitting",
   successTitle: "Request received.",
   successBody:
-    "Your prospectus request is queued for review. A member of the investor relations desk will respond to the institutional email provided.",
+    "Your prospectus request is queued for review. Investor relations will respond to the institutional email provided.",
   errorRequired: "This field is required.",
   errorEmail: "Enter a valid institutional email address.",
 } as const;
@@ -115,7 +144,7 @@ export const footer = {
   lpLogin: "LP Portal Login",
   disclaimers: [
     "Batin Lateef Capital utilizes a dual-jurisdiction structure for the formation, administration, and operation of its media investment vehicles. Interests are offered strictly to qualified limited partners and accredited investors who meet applicable eligibility standards in the relevant jurisdiction. This website is not directed at the general public and does not constitute an offer to sell, or a solicitation of an offer to buy, any security.",
-    "Any discussion of production leverage, soft money, presales, private equity exposure, or recoupment waterfalls describes target fund architecture and illustrative mechanics. It is not a representation of historical results. Past performance does not guarantee future returns. There can be no assurance that any investment will achieve its objectives or that investors will not lose some or all of their capital.",
+    "ROI targets, equity exposure bands, and recoupment waterfalls describe target fund architecture and illustrative mechanics. They are not representations of historical results. Past performance does not guarantee future returns. There can be no assurance that any investment will achieve its objectives or that investors will not lose some or all of their capital.",
     "Nothing on this page should be construed as fund marketing materials for prospective investors considering an allocation, or used as the sole basis for any investment decision. All figures are internal, unaudited, and subject to change. Access to the investor portal is restricted to authorized limited partners.",
   ],
 } as const;
