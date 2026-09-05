@@ -1,5 +1,6 @@
 export const firm = "Batin Lateef Capital";
 export const wordmark = "BATIN LATEEF";
+export const headerWordmark = "BATIN LATEEF CAPITAL";
 
 export const menu = {
   approach: "Investment architecture",
@@ -51,22 +52,10 @@ export const metrics = {
 export const portfolio = {
   id: "architecture",
   eyebrow: "Investment architecture",
-  heading: "Structure, velocity, depth",
+  heading: "Structure. Velocity. Depth.",
   intro:
-    "Every slate runs on three layers: commercial genre packages, multi-jurisdictional incentive design, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
+    "Every slate runs on three layers: multi-jurisdictional incentive design, commercial genre packages, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
   items: [
-    {
-      id: "genre-velocity",
-      name: "Genre Velocity",
-      layer: "Commercial",
-      category: "Sci-fi · Thriller · Action",
-      invested: "Active",
-      exited: "",
-      valuation: "Four-quadrant",
-      description:
-        "Four-quadrant packages built for international streaming and theatrical windows. Presales, genre positioning, and delivery timelines are mapped before equity is called.",
-      image: "/images/film-soundstage.png",
-    },
     {
       id: "incentive-architecture",
       name: "Incentive Architecture",
@@ -80,10 +69,22 @@ export const portfolio = {
       image: "/images/toronto-table-mountain-skyline.png",
     },
     {
+      id: "genre-velocity",
+      name: "Genre Velocity",
+      layer: "Commercial",
+      category: "Action · Horror · Sci-fi · Thriller",
+      invested: "Active",
+      exited: "",
+      valuation: "Four-quadrant",
+      description:
+        "Four-quadrant packages built for international streaming and theatrical windows. Presales, genre positioning, and delivery timelines are mapped before equity is called.",
+      image: "/images/film-soundstage.png",
+    },
+    {
       id: "lateef-standard",
-      name: "Lateef Standard",
+      name: "Batin Lateef Standard",
       layer: "Creative",
-      category: "Empathetic visibility",
+      category: "The Art of The Unsaid",
       invested: "Active",
       exited: "",
       valuation: "Character-led",
@@ -97,7 +98,7 @@ export const portfolio = {
 export const closing = {
   id: "closing",
   eyebrow: "The full arc",
-  heading: "From treaty stack to empathetic visibility",
+  heading: "From Treaty Stack to Empathetic Visibility",
   lead: "Every investment begins with structure and ends with a story that reaches someone.",
   paragraphs: [
     "Treaties reduce exposure. Genre packages drive commercial velocity. Character depth earns audience loyalty that outlasts opening weekend.",

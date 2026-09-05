@@ -13,7 +13,7 @@ export function InvestorPortalModal() {
       <button
         type="button"
         onClick={close}
-        className="mt-8 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-beige transition hover:bg-burgundy/90 active:scale-[0.98]"
+        className="mt-8 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-bone transition hover:bg-burgundy/90 active:scale-[0.98]"
       >
         {portalModal.close}
       </button>

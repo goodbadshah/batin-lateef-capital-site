@@ -70,7 +70,7 @@ export function Hero() {
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 52vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-beige/10 via-beige/20 to-beige lg:bg-gradient-to-l lg:from-beige lg:via-beige/40 lg:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bone/10 via-bone/20 to-bone lg:bg-gradient-to-l lg:from-bone lg:via-bone/40 lg:to-transparent" />
         </div>
       </div>
 

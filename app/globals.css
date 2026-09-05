@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-beige: #eee9e1;
+  --color-bone: #e5ddd2;
   --color-burgundy: #4f2330;
   --color-ruby: #b44a5a;
   --color-ink: #1c1418;
@@ -22,7 +22,7 @@
 
 :root {
   color-scheme: light;
-  --bg: #eee9e1;
+  --bg: #e5ddd2;
   --sidebar: #4f2330;
 }
 
@@ -64,7 +64,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklch, var(--color-ruby) 25%, white);
+  background: color-mix(in oklch, var(--color-ruby) 25%, var(--color-bone));
   color: var(--color-ink);
 }
 

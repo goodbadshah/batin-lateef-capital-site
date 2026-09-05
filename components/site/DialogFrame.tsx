@@ -67,7 +67,7 @@ export function DialogFrame({
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelId}
-        className="relative w-full max-w-lg border border-line bg-beige p-6 shadow-[0_24px_80px_rgb(28_20_24_/_0.18)] sm:p-8"
+        className="relative w-full max-w-lg border border-line bg-bone p-6 shadow-[0_24px_80px_rgb(28_20_24_/_0.18)] sm:p-8"
       >
         <div className="mb-6 flex items-start justify-between gap-4">
           <h2 id={labelId} className="headline-balance font-serif text-2xl leading-[1.15] text-ink pb-1">

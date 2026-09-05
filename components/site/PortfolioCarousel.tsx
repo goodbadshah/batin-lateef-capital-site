@@ -61,7 +61,7 @@ export function PortfolioCarousel() {
           return (
             <article
               key={entry.id}
-              className={`border transition-[border-color,background-color] duration-300 ${isOpen ? "border-ink bg-white/50" : "border-line bg-transparent"}`}
+              className={`border transition-[border-color,background-color] duration-300 ${isOpen ? "border-ink bg-bone/80" : "border-line bg-transparent"}`}
             >
               <button
                 type="button"

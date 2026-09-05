@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <div className="min-h-[100dvh] bg-beige pt-14">
+      <div className="min-h-[100dvh] bg-bone pt-14">
         <main>
           <Hero />
           <ParallaxMedia strip={mediaStrips[0]} />

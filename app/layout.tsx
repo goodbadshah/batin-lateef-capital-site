@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-beige font-sans text-ink">
+      <body className="min-h-full bg-bone font-sans text-ink">
         <ScrollProvider>
           <ModalProvider>
             {children}

@@ -8,7 +8,7 @@ import { useModals } from "./ModalProvider";
 type Errors = Partial<Record<"name" | "email" | "type", string>>;
 
 const fieldClass =
-  "border border-line bg-white px-3 py-2.5 text-ink outline-none ring-ruby focus:ring-1";
+  "border border-line bg-bone px-3 py-2.5 text-ink outline-none ring-ruby focus:ring-1";
 
 export function ProspectusModal() {
   const { kind, close } = useModals();
@@ -47,7 +47,7 @@ export function ProspectusModal() {
           <button
             type="button"
             onClick={close}
-            className="mt-8 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-beige"
+            className="mt-8 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-bone"
           >
             Close
           </button>
@@ -134,7 +134,7 @@ export function ProspectusModal() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="mt-2 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-beige transition hover:bg-burgundy/90 active:scale-[0.98] disabled:opacity-60"
+            className="mt-2 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-bone transition hover:bg-burgundy/90 active:scale-[0.98] disabled:opacity-60"
           >
             {status === "loading" ? prospectus.submitting : prospectus.submit}
           </button>
