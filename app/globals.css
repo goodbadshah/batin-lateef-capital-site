@@ -110,3 +110,139 @@ textarea {
   inset: 0;
   will-change: transform;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow-icon-gauge-fill {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: flow-gauge 2.6s ease-in-out infinite alternate;
+  }
+
+  .flow-icon-coin {
+    animation: flow-coin 2.2s ease-in-out infinite;
+  }
+
+  .flow-icon-stamp {
+    animation: flow-stamp 2.4s ease-in-out infinite;
+  }
+
+  .flow-icon-puzzle-left {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: flow-puzzle-left 2.8s ease-in-out infinite alternate;
+  }
+
+  .flow-icon-puzzle-right {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: flow-puzzle-right 2.8s ease-in-out infinite alternate;
+  }
+
+  .flow-icon-clapper-top {
+    animation: flow-clapper 2.8s ease-in-out infinite;
+  }
+
+  .flow-icon-gear {
+    animation: flow-gear 4s linear infinite;
+    transform-origin: 46px 46px;
+  }
+
+  .flow-icon-chart-line {
+    stroke-dasharray: 80;
+    animation: flow-chart 2.5s ease-in-out infinite alternate;
+  }
+
+  .flow-icon-drop {
+    animation: flow-drop 2s ease-in-out infinite;
+  }
+}
+
+@keyframes flow-gauge {
+  from {
+    transform: scaleY(0.45);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes flow-coin {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.5;
+  }
+}
+
+@keyframes flow-stamp {
+  0%,
+  70%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(3px) scale(0.96);
+    opacity: 0.7;
+  }
+}
+
+@keyframes flow-puzzle-left {
+  from {
+    transform: translateX(-6px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes flow-puzzle-right {
+  from {
+    transform: translateX(6px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes flow-clapper {
+  0%,
+  85%,
+  100% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes flow-gear {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flow-chart {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes flow-drop {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(4px);
+    opacity: 0.4;
+  }
+}

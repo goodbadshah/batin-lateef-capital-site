@@ -1,5 +1,6 @@
 import { About } from "@/components/site/About";
 import { Commit } from "@/components/site/Commit";
+import { HowItWorks } from "@/components/site/HowItWorks";
 import { Footer } from "@/components/site/Footer";
 import { Hero } from "@/components/site/Hero";
 import { Metrics } from "@/components/site/Metrics";
@@ -23,6 +24,7 @@ export default function Home() {
           <ManifestoQuote />
           <ParallaxMedia strip={mediaStrips[2]} />
           <Commit />
+          <HowItWorks />
           <Metrics />
           <ParallaxMedia strip={mediaStrips[3]} />
           <PortfolioCarousel />

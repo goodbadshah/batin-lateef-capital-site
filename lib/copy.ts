@@ -39,6 +39,50 @@ export const commit = {
   ],
 } as const;
 
+export const howItWorks = {
+  id: "how-it-works",
+  eyebrow: "The architecture in motion",
+  heading: "How Capital Moves Through Batin Lateef",
+  lead: "Five stages. Each one de risks the next. Equity deploys first to unlock the stack, then recoups as incentives and sales certify.",
+  steps: [
+    {
+      id: "equity-deploys",
+      number: 1,
+      title: "Equity Deploys",
+      description:
+        "Private equity fills the 20 to 30 percent gap in the financing stack. This commitment is what triggers presale commitments, broadcaster licences, and gap financing from institutional partners.",
+    },
+    {
+      id: "package-presales",
+      number: 2,
+      title: "Package and Presales",
+      description:
+        "Four quadrant genre projects are packaged with cast, director, and budget. With equity committed, international territory presales close and contract revenue before greenlight.",
+    },
+    {
+      id: "treaty-coproduction",
+      number: 3,
+      title: "Treaty Co Production",
+      description:
+        "Canada and South Africa enter a treaty compliant co production structure. The CPTC, provincial film tax credits, and the DTIC Film and Television Production Incentive are filed pre production and certified post delivery.",
+    },
+    {
+      id: "production-delivery",
+      number: 4,
+      title: "Production and Delivery",
+      description:
+        "Batin Lateef stays active through production, post production, and delivery. No passive capital. Treaty compliance, production finance, and delivery are managed in house.",
+    },
+    {
+      id: "recoupment-upside",
+      number: 5,
+      title: "Recoupment and Upside",
+      description:
+        "Certified incentive rebates, presale revenues, and broadcaster fees recoup through the waterfall. Backend participation of up to 30 percent delivers returns when the slate performs across streaming and theatrical windows.",
+    },
+  ],
+} as const;
+
 export const metrics = {
   items: [
     { label: "Private equity exposure", value: "20-30%" },
