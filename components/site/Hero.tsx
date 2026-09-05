@@ -1,87 +1,87 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { hero } from "@/lib/copy";
-import { MagneticButton } from "./MagneticButton";
-import { useModals } from "./ModalProvider";
+import { heroImage } from "@/lib/images";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function Hero() {
-  const reduce = useReducedMotion();
-  const { openProspectus } = useModals();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.35]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageWrapRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const copyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const imageWrap = imageWrapRef.current;
+    const image = imageRef.current;
+    const copy = copyRef.current;
+    if (!section || !imageWrap || !image || !copy) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        image,
+        { yPercent: -6, scale: 1.12 },
+        {
+          yPercent: 14,
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        },
+      );
+
+      gsap.from(copy.children, {
+        opacity: 0,
+        y: 56,
+        duration: 1.1,
+        stagger: 0.12,
+        ease: "power3.out",
+        delay: 0.15,
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
-    <section ref={ref} className="relative min-h-[100dvh] overflow-hidden">
-      <div className="mx-auto grid min-h-[100dvh] max-w-[1600px] grid-cols-1 lg:grid-cols-[1.05fr_0.95fr]">
-        <motion.div
-          style={reduce ? undefined : { y: textY, opacity }}
-          className="relative z-10 flex flex-col justify-end px-4 pb-14 pt-24 sm:px-8 lg:px-12 lg:pb-20 lg:pt-24"
-        >
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mb-6 max-w-[14ch] font-serif text-[clamp(2.75rem,6vw,5.25rem)] leading-[1.08] text-heading pb-1 headline-balance"
-          >
-            {hero.headline}
-          </motion.p>
-          <motion.p
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[42ch] text-[15px] leading-relaxed text-silver md:text-base"
-          >
-            {hero.subhead}
-          </motion.p>
-          <motion.div
-            initial={reduce ? false : { opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
-          >
-            <MagneticButton
-              onClick={openProspectus}
-              className="bg-gold px-6 py-3.5 text-sm font-medium text-obsidian hover:bg-gold-dim"
-            >
-              {hero.primaryCta}
-            </MagneticButton>
-            <MagneticButton
-              href="#structure"
-              className="border border-gold/80 px-6 py-3.5 text-sm font-medium text-gold hover:bg-gold/10"
-            >
-              {hero.secondaryCta}
-            </MagneticButton>
-          </motion.div>
-        </motion.div>
-
-        <div className="relative min-h-[42vh] lg:min-h-[100dvh]">
-          <motion.div
-            style={reduce ? undefined : { y: imageY }}
-            className="cinematic-frame absolute inset-0 lg:inset-y-0 lg:right-0 lg:left-[-8vw]"
-          >
-            <Image
-              src="/images/hero-dock.png"
-              alt="Cinematographer beside anamorphic glass at blue hour on a working dock."
-              fill
-              priority
-              sizes="(min-width: 1024px) 55vw, 100vw"
-              className="object-cover object-[center_35%]"
-            />
-          </motion.div>
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-transparent lg:from-obsidian lg:via-obsidian/40"
-            aria-hidden
+    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden">
+      <div
+        ref={imageWrapRef}
+        className="absolute inset-x-0 top-0 h-[62vh] lg:absolute lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[52%]"
+      >
+        <div ref={imageRef} className="relative h-full w-full">
+          <Image
+            src={heroImage.src}
+            alt={heroImage.alt}
+            fill
+            priority
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 52vw"
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-beige/10 via-beige/20 to-beige lg:bg-gradient-to-l lg:from-beige lg:via-beige/40 lg:to-transparent" />
         </div>
+      </div>
+
+      <div
+        ref={copyRef}
+        className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-16 pt-[58vh] sm:px-10 lg:max-w-[48%] lg:justify-end lg:pb-24 lg:pt-28 lg:pl-14"
+      >
+        <h1 className="max-w-[12ch] font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.02] text-ink">
+          {hero.lineOne} <span className="italic">{hero.lineOneItalic}</span>
+        </h1>
+        <h2 className="mt-6 font-serif text-[clamp(1.35rem,2.5vw,2rem)] italic text-muted">{hero.lineTwo}</h2>
       </div>
     </section>
   );

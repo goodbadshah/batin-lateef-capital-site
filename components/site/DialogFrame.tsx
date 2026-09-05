@@ -59,7 +59,7 @@ export function DialogFrame({
       <button
         type="button"
         aria-label="Dismiss dialog"
-        className="absolute inset-0 bg-obsidian/80"
+        className="absolute inset-0 bg-ink/50"
         onClick={onClose}
       />
       <div
@@ -67,19 +67,16 @@ export function DialogFrame({
         role="dialog"
         aria-modal="true"
         aria-labelledby={labelId}
-        className="relative w-full max-w-lg border border-line bg-obsidian p-6 shadow-[0_24px_80px_rgb(11_15_25_/_0.65)] sm:p-8"
+        className="relative w-full max-w-lg border border-line bg-beige p-6 shadow-[0_24px_80px_rgb(28_20_24_/_0.18)] sm:p-8"
       >
         <div className="mb-6 flex items-start justify-between gap-4">
-          <h2
-            id={labelId}
-            className="headline-balance font-serif text-2xl leading-[1.15] text-heading pb-1"
-          >
+          <h2 id={labelId} className="headline-balance font-serif text-2xl leading-[1.15] text-ink pb-1">
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="shrink-0 text-silver transition hover:text-heading active:scale-[0.98]"
+            className="shrink-0 text-muted transition hover:text-ink active:scale-[0.98]"
             aria-label="Close"
           >
             <X size={22} weight="regular" />

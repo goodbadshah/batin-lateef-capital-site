@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import { ModalProvider } from "@/components/site/ModalProvider";
 import { InvestorPortalModal } from "@/components/site/InvestorPortalModal";
 import { ProspectusModal } from "@/components/site/ProspectusModal";
+import { ScrollProvider } from "@/components/site/ScrollProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,7 +25,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Batin Lateef Capital",
   description:
-    "Multi-jurisdictional media fund financing four-quadrant film and television. Treaty-stacked incentives. Empathetic visibility.",
+    "Multi-jurisdictional media fund financing four-quadrant film and television with treaty-stacked production architecture.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -33,13 +34,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full bg-obsidian font-sans text-silver">
-        <ModalProvider>
-          {children}
-          <InvestorPortalModal />
-          <ProspectusModal />
-        </ModalProvider>
-        <div className="site-grain" aria-hidden="true" />
+      <body className="min-h-full bg-beige font-sans text-ink">
+        <ScrollProvider>
+          <ModalProvider>
+            {children}
+            <InvestorPortalModal />
+            <ProspectusModal />
+          </ModalProvider>
+        </ScrollProvider>
       </body>
     </html>
   );

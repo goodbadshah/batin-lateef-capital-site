@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Footer } from "@/components/site/Footer";
-import { Nav } from "@/components/site/Nav";
+import { Sidebar } from "@/components/site/Sidebar";
 import { wordmark } from "@/lib/copy";
 
 export function LegalPage({
@@ -12,17 +12,19 @@ export function LegalPage({
 }) {
   return (
     <>
-      <Nav />
-      <main className="mx-auto max-w-[760px] px-4 py-16 sm:px-6 lg:py-24">
-        <p className="mb-6 text-sm text-silver">
-          <Link href="/" className="hover:text-gold">
-            {wordmark}
-          </Link>
-        </p>
-        <h1 className="font-serif text-4xl text-heading">{title}</h1>
-        <div className="mt-8 space-y-5 text-base leading-relaxed text-silver">{children}</div>
-      </main>
-      <Footer />
+      <Sidebar />
+      <div className="main-shell min-h-[100dvh] bg-beige pt-14 lg:pt-0">
+        <main className="mx-auto max-w-[760px] px-6 py-16 sm:px-10 lg:py-24">
+          <p className="mb-6 text-sm text-muted">
+            <Link href="/" className="hover:text-ruby">
+              {wordmark}
+            </Link>
+          </p>
+          <h1 className="font-serif text-4xl text-ink">{title}</h1>
+          <div className="mt-8 space-y-5 text-base leading-relaxed text-muted">{children}</div>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

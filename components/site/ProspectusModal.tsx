@@ -7,6 +7,9 @@ import { useModals } from "./ModalProvider";
 
 type Errors = Partial<Record<"name" | "email" | "type", string>>;
 
+const fieldClass =
+  "border border-line bg-white px-3 py-2.5 text-ink outline-none ring-ruby focus:ring-1";
+
 export function ProspectusModal() {
   const { kind, close } = useModals();
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -39,24 +42,24 @@ export function ProspectusModal() {
     <DialogFrame title={prospectus.title} onClose={close}>
       {status === "success" ? (
         <div>
-          <p className="font-medium text-heading">{prospectus.successTitle}</p>
-          <p className="mt-2 text-sm leading-relaxed text-silver">{prospectus.successBody}</p>
+          <p className="font-medium text-ink">{prospectus.successTitle}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{prospectus.successBody}</p>
           <button
             type="button"
             onClick={close}
-            className="mt-8 whitespace-nowrap bg-gold px-5 py-3 text-sm font-medium text-obsidian"
+            className="mt-8 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-beige"
           >
             Close
           </button>
         </div>
       ) : (
         <form onSubmit={onSubmit} className="flex flex-col gap-5" noValidate>
-          <p className="text-sm text-silver">{prospectus.helper}</p>
+          <p className="text-sm text-muted">{prospectus.helper}</p>
           <div className="flex flex-col gap-2">
-            <label htmlFor="lp-name" className="text-sm text-heading">
+            <label htmlFor="lp-name" className="text-sm text-ink">
               {prospectus.name}
             </label>
-            <p id="lp-name-help" className="text-xs text-silver">
+            <p id="lp-name-help" className="text-xs text-muted">
               {prospectus.nameHelper}
             </p>
             <input
@@ -67,19 +70,19 @@ export function ProspectusModal() {
               onChange={(e) => setName(e.target.value)}
               aria-describedby="lp-name-help"
               aria-invalid={Boolean(errors.name)}
-              className="border border-line bg-obsidian px-3 py-2.5 text-heading outline-none ring-gold focus:ring-1"
+              className={fieldClass}
             />
             {errors.name ? (
-              <p className="text-sm text-gold" role="alert">
+              <p className="text-sm text-ruby" role="alert">
                 {errors.name}
               </p>
             ) : null}
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="lp-email" className="text-sm text-heading">
+            <label htmlFor="lp-email" className="text-sm text-ink">
               {prospectus.email}
             </label>
-            <p id="lp-email-help" className="text-xs text-silver">
+            <p id="lp-email-help" className="text-xs text-muted">
               {prospectus.emailHelper}
             </p>
             <input
@@ -91,19 +94,19 @@ export function ProspectusModal() {
               onChange={(e) => setEmail(e.target.value)}
               aria-describedby="lp-email-help"
               aria-invalid={Boolean(errors.email)}
-              className="border border-line bg-obsidian px-3 py-2.5 text-heading outline-none ring-gold focus:ring-1"
+              className={fieldClass}
             />
             {errors.email ? (
-              <p className="text-sm text-gold" role="alert">
+              <p className="text-sm text-ruby" role="alert">
                 {errors.email}
               </p>
             ) : null}
           </div>
           <div className="flex flex-col gap-2">
-            <label htmlFor="lp-type" className="text-sm text-heading">
+            <label htmlFor="lp-type" className="text-sm text-ink">
               {prospectus.type}
             </label>
-            <p id="lp-type-help" className="text-xs text-silver">
+            <p id="lp-type-help" className="text-xs text-muted">
               {prospectus.typeHelper}
             </p>
             <select
@@ -113,7 +116,7 @@ export function ProspectusModal() {
               onChange={(e) => setType(e.target.value)}
               aria-describedby="lp-type-help"
               aria-invalid={Boolean(errors.type)}
-              className="border border-line bg-obsidian px-3 py-2.5 text-heading outline-none ring-gold focus:ring-1"
+              className={fieldClass}
             >
               <option value="">Select</option>
               {prospectus.types.map((t) => (
@@ -123,7 +126,7 @@ export function ProspectusModal() {
               ))}
             </select>
             {errors.type ? (
-              <p className="text-sm text-gold" role="alert">
+              <p className="text-sm text-ruby" role="alert">
                 {errors.type}
               </p>
             ) : null}
@@ -131,7 +134,7 @@ export function ProspectusModal() {
           <button
             type="submit"
             disabled={status === "loading"}
-            className="mt-2 whitespace-nowrap bg-gold px-5 py-3 text-sm font-medium text-obsidian transition hover:bg-gold/90 active:scale-[0.98] disabled:opacity-60"
+            className="mt-2 whitespace-nowrap bg-burgundy px-5 py-3 text-sm font-medium text-beige transition hover:bg-burgundy/90 active:scale-[0.98] disabled:opacity-60"
           >
             {status === "loading" ? prospectus.submitting : prospectus.submit}
           </button>

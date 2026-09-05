@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-obsidian: #0b0f19;
-  --color-obsidian-elevated: #121826;
-  --color-gold: #d4af37;
-  --color-gold-dim: color-mix(in oklch, #d4af37 72%, #0b0f19);
-  --color-heading: #f4f4f5;
-  --color-silver: #9aa3b2;
-  --color-line: rgb(148 163 184 / 0.18);
+  --color-beige: #eee9e1;
+  --color-burgundy: #4f2330;
+  --color-ruby: #b44a5a;
+  --color-ink: #1c1418;
+  --color-muted: #5c4f55;
+  --color-line: rgb(28 20 24 / 0.12);
   --font-sans: var(--font-geist-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-serif: "PPEditorial", var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-serif: "PPEditorial", var(--font-playfair), "Palatino Linotype", Palatino, serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --sidebar-w: clamp(17rem, 22vw, 22rem);
 }
 
 @font-face {
@@ -22,14 +22,31 @@
 }
 
 :root {
-  color-scheme: dark;
-  --bg: #0b0f19;
-  --nav-h: 4.5rem;
+  color-scheme: light;
+  --bg: #eee9e1;
+  --sidebar: #4f2330;
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   background: var(--bg);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -41,71 +58,43 @@ html {
 body {
   min-height: 100dvh;
   background: var(--bg);
-  color: var(--color-silver);
+  color: var(--color-ink);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: color-mix(in oklch, var(--color-gold) 45%, transparent);
-  color: var(--color-heading);
-}
-
-.site-grain {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.055;
-  mix-blend-mode: soft-light;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background: color-mix(in oklch, var(--color-ruby) 25%, white);
+  color: var(--color-ink);
 }
 
 .headline-balance {
   text-wrap: balance;
 }
 
-.section-anchor {
-  scroll-margin-top: calc(var(--nav-h) + 1rem);
+.main-shell {
+  margin-left: var(--sidebar-w);
 }
 
-.cinematic-frame {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-}
-
-.cinematic-frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    rgb(11 15 25 / 0.15) 0%,
-    transparent 28%,
-    transparent 72%,
-    rgb(11 15 25 / 0.55) 100%
-  );
-}
-
-.cinematic-frame img {
-  filter: saturate(0.88) contrast(1.06);
-}
-
-.liquid-glass-nav {
-  border-bottom: 1px solid rgb(255 255 255 / 0.08);
-  background: linear-gradient(135deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.02));
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-}
-
-@media (prefers-reduced-transparency: reduce) {
-  .liquid-glass-nav {
-    background: rgb(11 15 25 / 0.96);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+@media (max-width: 1023px) {
+  .main-shell {
+    margin-left: 0;
   }
+}
+
+.carousel-track {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  scroll-snap-align: start;
 }
 
 input,
@@ -119,4 +108,16 @@ input,
 select,
 textarea {
   border-radius: 2px;
+}
+
+.media-frame {
+  position: relative;
+  overflow: hidden;
+  background: rgb(28 20 24 / 0.04);
+}
+
+.media-frame-inner {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
 }
