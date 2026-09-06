@@ -95,6 +95,11 @@ export function Hero() {
         </div>
 
         <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[46%] bg-[linear-gradient(to_bottom,transparent_0%,transparent_36%,rgb(229_221_210/0.45)_68%,rgb(229_221_210/0.9)_88%,#e5ddd2_100%)] lg:hidden"
+        />
+
+        <div
           ref={stripeOverlayRef}
           aria-hidden
           className="pointer-events-none absolute inset-0 z-10 flex"

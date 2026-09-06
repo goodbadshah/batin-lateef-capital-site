@@ -84,6 +84,9 @@ export const howItWorks = {
 } as const;
 
 export const metrics = {
+  eyebrow: "Fund structure",
+  heading: "Target architecture",
+  hint: "Scroll to walk through each layer",
   items: [
     { label: "Private equity exposure", value: "20-30%" },
     { label: "Target ROI", value: "12-15%" },
