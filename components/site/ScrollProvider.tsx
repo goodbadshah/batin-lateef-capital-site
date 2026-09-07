@@ -27,7 +27,14 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
+    const refresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", refresh);
+    window.addEventListener("resize", refresh);
+    document.fonts?.ready.then(refresh);
+
     return () => {
+      window.removeEventListener("load", refresh);
+      window.removeEventListener("resize", refresh);
       gsap.ticker.remove(tick);
       lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

@@ -105,13 +105,48 @@ textarea {
   background: rgb(28 20 24 / 0.04);
 }
 
-.media-frame-inner {
-  position: absolute;
-  inset: 0;
-}
-
 .media-frame img {
   display: block;
+}
+
+/* Native aspect-ratio — reliable at every breakpoint (unlike dynamic Tailwind classes) */
+.media-aspect-4-3 {
+  aspect-ratio: 4 / 3;
+}
+
+.media-aspect-4-5 {
+  aspect-ratio: 4 / 5;
+}
+
+.media-aspect-3-4 {
+  aspect-ratio: 3 / 4;
+}
+
+.media-aspect-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.media-aspect-16-10 {
+  aspect-ratio: 16 / 10;
+}
+
+.media-aspect-3-2 {
+  aspect-ratio: 3 / 2;
+}
+
+/* Landscape gallery assets are 1536×1024 (3:2). Keep the crop close to that. */
+.media-aspect-heritage-left {
+  aspect-ratio: 4 / 3;
+}
+
+/* Even overflow so y-scrub does not force a taller crop on landscape photos */
+.media-frame-parallax {
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: no-preference) {

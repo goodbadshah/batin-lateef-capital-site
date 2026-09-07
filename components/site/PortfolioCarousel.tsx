@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { portfolio } from "@/lib/copy";
-import { MediaFrame } from "@/components/site/MediaFrame";
+import { GalleryFrame } from "@/components/site/GalleryFrame";
 import { ScrollReveal } from "./ScrollReveal";
 
 export function PortfolioCarousel() {
@@ -69,10 +69,11 @@ export function PortfolioCarousel() {
                 onClick={() => toggle(index)}
                 className="w-full text-left"
               >
-                <MediaFrame
+                <GalleryFrame
                   src={entry.image}
                   alt={`${entry.name}, ${entry.category}`}
-                  className="aspect-[4/3]"
+                  aspectClass="media-aspect-4-3"
+                  speed={0.22 + index * 0.06}
                   sizes="(max-width: 1024px) 100vw, 33vw"
                 />
                 <div className="p-5 sm:p-6">
