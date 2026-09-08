@@ -26,7 +26,7 @@ export const about = {
 
 export const manifesto = {
   quote:
-    "Batin Lateef champions empathetic visibility through the art of the unsaid. We reject tokenism and overt didactic storytelling. Instead, we embed ethical Islamic heritage into the quiet spaces of mainstream cinema through a character's background choices, ancestral subtext, and subtle moral compasses.",
+    "Batin Lateef champions empathetic visibility through the art of the unsaid. We reject tokenism and overt didactic storytelling. Instead, we embed ethical underrepresented Islamic heritage into the quiet spaces of mainstream cinema through a character's background choices, ancestral subtext, and subtle moral compasses.",
   closing: "The depth is hidden (Batin). The execution is gentle and nuanced (Lateef).",
 } as const;
 
