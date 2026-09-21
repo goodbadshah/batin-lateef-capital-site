@@ -19,7 +19,7 @@ export const about = {
   id: "about",
   heading: "We Leverage Treaties to Drive Visibility",
   paragraphs: [
-    "Batin Lateef is a specialized multi-jurisdictional media fund dedicated to financing high-yield, four-quadrant global film and television content. By strategically arbitrage-stacking Canadian and South African production incentives, we de-risk private equity exposure to 20-30% of project budgets while targeting a consistent 12-15% ROI, delivering premium commercial entertainment with profound character depth.",
+    "Batin Lateef is a $12M multi-jurisdictional media fund dedicated to financing high-yield, genre-forward global film and television content. By strategically arbitrage-stacking Canadian and South African production incentives, we de-risk private equity exposure to 20-30% of project budgets while targeting a 7-8% annual preferred return plus backend AGP participation, delivering premium commercial entertainment with nuanced Islamic presence.",
     "In a market where many funds pass capital and step back, we stay in the work: treaty compliance, presales, production finance, and delivery. Our team combines line producers, distribution strategists, and institutional capital partners who have shipped commercial slates to streaming and theatrical windows.",
   ],
 } as const;
@@ -78,7 +78,7 @@ export const howItWorks = {
       number: 5,
       title: "Recoupment and Upside",
       description:
-        "Certified incentive rebates, presale revenues, and broadcaster fees recoup through the waterfall. Backend participation of up to 30 percent delivers returns when the slate performs across streaming and theatrical windows.",
+        "Certified incentive rebates, presale revenues, and broadcaster fees recoup through the waterfall. Backend participation of up to 50 percent delivers returns when the slate performs across streaming and theatrical windows.",
     },
   ],
 } as const;
@@ -87,12 +87,13 @@ export const metrics = {
   eyebrow: "Fund structure",
   heading: "Target architecture",
   items: [
+    { label: "Fund target (rolling close)", value: "$12M" },
     { label: "Private equity exposure", value: "20-30%" },
-    { label: "Target ROI", value: "12-15%" },
+    { label: "Annual preferred return (target profit rate)", value: "7-8%" },
     { label: "Soft-money ratio", value: "4.0x" },
-    { label: "Backend participation", value: "Up to 30%" },
+    { label: "Backend participation", value: "Up to 50%" },
   ],
-  note: "Target fund architecture. Not audited performance.",
+  note: "The annual preferred return of 7-8% is structured as a target profit rate contingent on fund performance, not a guaranteed coupon. The total investor backend pool is 50% per project. When Batin Lateef is the sole equity investor on a project, the fund captures up to 50% of backend participation. When co-investing, backend participation scales pro-rata to equity position.",
 } as const;
 
 export const portfolio = {

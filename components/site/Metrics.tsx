@@ -48,19 +48,21 @@ export function Metrics() {
         <h2 className="mt-4 font-serif text-[clamp(2rem,4vw,3rem)] leading-tight text-ink">{metrics.heading}</h2>
       </ScrollReveal>
 
-      <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+      <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
         {metrics.items.map((item) => (
           <div key={item.label} data-metric-item className="border-t border-line pt-8">
-            <p className="font-serif text-[clamp(2.75rem,5.5vw,4.25rem)] leading-none tabular-nums text-ink">
+            <p className="font-serif text-[clamp(2.75rem,5.5vw,4.25rem)] leading-none whitespace-nowrap tabular-nums text-ink">
               {item.value}
             </p>
-            <p className="mt-4 text-[11px] uppercase tracking-[0.18em] text-muted">{item.label}</p>
+            <p className="mt-4 max-w-[18rem] text-[11px] uppercase leading-relaxed tracking-[0.18em] text-muted">
+              {item.label}
+            </p>
           </div>
         ))}
       </div>
 
       <ScrollReveal delay={0.15}>
-        <p className="mt-14 text-xs text-muted lg:mt-16">{metrics.note}</p>
+        <p className="mt-14 max-w-[65ch] text-xs leading-relaxed text-muted lg:mt-16">{metrics.note}</p>
       </ScrollReveal>
     </section>
   );

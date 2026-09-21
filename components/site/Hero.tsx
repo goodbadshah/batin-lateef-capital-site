@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { hero } from "@/lib/copy";
@@ -19,7 +19,7 @@ export function Hero() {
   const stripeMasksRef = useRef<(HTMLDivElement | null)[]>([]);
   const copyRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const section = sectionRef.current;
     const imageParallax = imageParallaxRef.current;
     const copy = copyRef.current;
@@ -35,6 +35,7 @@ export function Hero() {
 
     if (reduced) {
       hideOverlay();
+      gsap.set(copy.children, { opacity: 1, y: 0 });
       return;
     }
 
@@ -64,21 +65,28 @@ export function Hero() {
         },
       );
 
-      gsap.from(copy.children, {
-        opacity: 0,
-        y: 56,
-        duration: 1.1,
-        stagger: 0.12,
-        ease: "power3.out",
-        delay: 0.45,
-      });
+      gsap.fromTo(
+        copy.children,
+        { opacity: 0, y: 56 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.1,
+          stagger: 0.12,
+          ease: "power3.out",
+          delay: 0.45,
+        },
+      );
     }, section);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-[100dvh] overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative min-h-[calc(100svh-3.5rem)] overflow-hidden lg:min-h-[calc(100dvh-3.5rem)]"
+    >
       <div
         ref={imageWrapRef}
         className="absolute inset-x-0 top-0 h-[62vh] overflow-hidden lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[52%]"
@@ -96,7 +104,7 @@ export function Hero() {
 
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[46%] bg-[linear-gradient(to_bottom,transparent_0%,transparent_36%,rgb(229_221_210/0.45)_68%,rgb(229_221_210/0.9)_88%,#e5ddd2_100%)] lg:hidden"
+          className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[64%] bg-[linear-gradient(to_bottom,transparent_0%,transparent_12%,rgb(229_221_210/0.42)_48%,rgb(229_221_210/0.9)_78%,#e5ddd2_100%)] lg:hidden"
         />
 
         <div
@@ -119,12 +127,14 @@ export function Hero() {
 
       <div
         ref={copyRef}
-        className="relative z-10 flex min-h-[100dvh] flex-col justify-end px-6 pb-16 pt-[58vh] sm:px-10 lg:max-w-[48%] lg:justify-end lg:pb-24 lg:pt-28 lg:pl-14"
+        className="relative z-10 flex min-h-[calc(100svh-3.5rem)] flex-col justify-end px-6 pb-[max(6.5rem,calc(env(safe-area-inset-bottom)+4.5rem))] pt-[48vh] sm:px-10 lg:min-h-[calc(100dvh-3.5rem)] lg:max-w-[48%] lg:pb-32 lg:pt-28 lg:pl-14"
       >
-        <h1 className="max-w-[12ch] font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.02] text-ink">
+        <h1 className="max-w-[12ch] font-serif text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.02] text-ink opacity-0 motion-reduce:opacity-100">
           {hero.lineOne} <span className="italic">{hero.lineOneItalic}</span>
         </h1>
-        <h2 className="mt-6 font-serif text-[clamp(1.35rem,2.5vw,2rem)] italic text-muted">{hero.lineTwo}</h2>
+        <h2 className="mt-6 font-serif text-[clamp(1.35rem,2.5vw,2rem)] italic text-muted opacity-0 motion-reduce:opacity-100">
+          {hero.lineTwo}
+        </h2>
       </div>
     </section>
   );
