@@ -19,7 +19,7 @@ export const about = {
   id: "about",
   heading: "We Leverage Treaties to Drive Visibility",
   paragraphs: [
-    "Batin Lateef is a $12M multi-jurisdictional media fund dedicated to financing a genre-forward slate plus selective prestige titles. By structuring productions across Canada, South Africa, Australia, Thailand, Ireland, and other jurisdictions, we reduce risk by holding private equity exposure to up to 25% of project budgets while targeting a 7-8% annual target profit rate plus backend AGP participation, delivering premium commercial entertainment with nuanced Islamic presence.",
+    "Batin Lateef is a $12M multi-jurisdictional media fund dedicated to financing a commercial genre-forward slate (thriller, horror, sci-fi, action) plus selective prestige titles. By structuring productions across Canada, South Africa, Australia, Thailand, Ireland, and other jurisdictions, we reduce risk by holding private equity exposure to up to 25% of project budgets while targeting a 7-8% annual target profit rate plus backend AGP participation, delivering premium commercial entertainment with nuanced Islamic presence.",
     "In a market where many funds pass capital and step back, we stay in the work. As mezzanine equity partner and executive producer on every project, we manage treaty compliance, production finance, and delivery in house. Our team combines line producers, distribution strategists, and institutional capital partners who have shipped commercial slates to streaming and theatrical windows.",
   ],
 } as const;
@@ -115,7 +115,7 @@ export const portfolio = {
   eyebrow: "Investment architecture",
   heading: "Structure. Velocity. Depth.",
   intro:
-    "The fund finances a genre-forward slate plus selective prestige titles. Every project runs on three layers: multi-jurisdictional incentive design, commercial genre packages, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
+    "The fund finances a commercial genre-forward slate (thriller, horror, sci-fi, action) plus selective prestige titles. Every project runs on three layers: multi-jurisdictional incentive design, commercial genre packages, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
   items: [
     {
       id: "incentive-architecture",
