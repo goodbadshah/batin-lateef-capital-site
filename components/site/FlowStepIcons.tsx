@@ -91,9 +91,9 @@ export function RecoupmentChartIcon({ className = "" }: IconProps) {
 }
 
 export const flowIcons = [
-  EquityGaugeIcon,
   PresalesStampIcon,
   TreatyPuzzleIcon,
+  EquityGaugeIcon,
   ClapperboardIcon,
   RecoupmentChartIcon,
 ] as const;

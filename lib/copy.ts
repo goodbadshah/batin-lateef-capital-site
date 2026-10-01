@@ -19,20 +19,20 @@ export const about = {
   id: "about",
   heading: "We Leverage Treaties to Drive Visibility",
   paragraphs: [
-    "Batin Lateef is a $12M multi-jurisdictional media fund dedicated to financing high-yield, genre-forward global film and television content. By strategically arbitrage-stacking Canadian and South African production incentives, we de-risk private equity exposure to 20-30% of project budgets while targeting a 7-8% annual preferred return plus backend AGP participation, delivering premium commercial entertainment with nuanced Islamic presence.",
-    "In a market where many funds pass capital and step back, we stay in the work: treaty compliance, presales, production finance, and delivery. Our team combines line producers, distribution strategists, and institutional capital partners who have shipped commercial slates to streaming and theatrical windows.",
+    "Batin Lateef is a $12M multi-jurisdictional media fund dedicated to financing a genre-forward slate plus selective prestige titles. By structuring productions across Canada, South Africa, Australia, Thailand, Ireland, and other jurisdictions, we reduce risk by holding private equity exposure to up to 25% of project budgets while targeting a 7-8% annual target profit rate plus backend AGP participation, delivering premium commercial entertainment with nuanced Islamic presence.",
+    "In a market where many funds pass capital and step back, we stay in the work. As mezzanine equity partner and executive producer on every project, we manage treaty compliance, production finance, and delivery in house. Our team combines line producers, distribution strategists, and institutional capital partners who have shipped commercial slates to streaming and theatrical windows.",
   ],
 } as const;
 
 export const manifesto = {
   quote:
-    "Batin Lateef champions empathetic visibility through the art of the unsaid. We reject tokenism and overt didactic storytelling. Instead, we embed ethical underrepresented Islamic heritage into the quiet spaces of mainstream cinema through a character's background choices, ancestral subtext, and subtle moral compasses.",
+    "Batin Lateef champions empathetic visibility through the art of the unsaid. We reject tokenism and overt didactic storytelling. Instead, we embed ethical underrepresented Islamic heritage into the quiet spaces of mainstream cinema through a character's background choices, ancestral subtext, and subtle moral compasses. Selective prestige titles follow the same standard.",
   closing: "The depth is hidden (Batin). The execution is gentle and nuanced (Lateef).",
 } as const;
 
 export const commit = {
   id: "commit",
-  heading: "De-Risked Through Ultimate Delivery",
+  heading: "Reduced Risk Through Ultimate Delivery",
   paragraphs: [
     "We finance slates where treaty arbitrage, presales, and genre velocity align. We do not chase volume. Structure first, then story.",
     "Once capital is deployed, we remain active through delivery and recoupment. When a slate performs, we scale the architecture across the next production cycle rather than diluting the model.",
@@ -43,42 +43,42 @@ export const howItWorks = {
   id: "how-it-works",
   eyebrow: "The architecture in motion",
   heading: "How Capital Moves Through Batin Lateef",
-  lead: "Five stages. Each one de risks the next. Equity deploys first to unlock the stack, then recoups as incentives and sales certify.",
+  lead: "Five stages. Each one reduces risk for the next. Presales and incentive eligibility are secured before equity is committed.",
   steps: [
     {
-      id: "equity-deploys",
-      number: 1,
-      title: "Equity Deploys",
-      description:
-        "Private equity fills the 20 to 30 percent gap in the financing stack. This commitment is what triggers presale commitments, broadcaster licences, and gap financing from institutional partners.",
-    },
-    {
       id: "package-presales",
-      number: 2,
+      number: 1,
       title: "Package and Presales",
       description:
-        "Four quadrant genre projects are packaged with cast, director, and budget. With equity committed, international territory presales close and contract revenue before greenlight.",
+        "Genre-forward projects are packaged with cast, director, budget, and a sales agent. Presales and MGs are contracted before equity is committed.",
     },
     {
-      id: "treaty-coproduction",
-      number: 3,
-      title: "Treaty Co Production",
+      id: "incentive-eligibility",
+      number: 2,
+      title: "Incentive Eligibility",
       description:
-        "Productions qualify as national in Canada and South Africa under the modernized audiovisual co production treaty. CPTC, provincial credits, CMF, and DTIC incentives are filed pre production and certified post delivery.",
+        "Productions are structured to qualify for the relevant national incentives; eligibility is confirmed and gap financing terms are in hand pre-production.",
+    },
+    {
+      id: "equity-commits",
+      number: 3,
+      title: "Equity Commits",
+      description:
+        "Mezzanine equity fills the remaining gap (up to 25% of budget) and closes the financing stack.",
     },
     {
       id: "production-delivery",
       number: 4,
       title: "Production and Delivery",
       description:
-        "Batin Lateef stays active through production, post production, and delivery. No passive capital. Treaty compliance, production finance, and delivery are managed in house.",
+        "Batin Lateef is an executive producer on every project, with full visibility and input across the lifecycle, managing treaty compliance, production finance, and delivery. No passive capital.",
     },
     {
       id: "recoupment-upside",
       number: 5,
       title: "Recoupment and Upside",
       description:
-        "Certified incentive rebates, presale revenues, and broadcaster fees recoup through the waterfall. Backend participation of up to 50 percent delivers returns when the slate performs across streaming and theatrical windows.",
+        "Certified incentive rebates, presale and MG revenue, and broadcaster fees flow through the collection waterfall; backend participation of up to 50% applies when the slate performs.",
     },
   ],
 } as const;
@@ -88,12 +88,26 @@ export const metrics = {
   heading: "Target architecture",
   items: [
     { label: "Fund target (rolling close)", value: "$12M" },
-    { label: "Private equity exposure", value: "20-30%" },
-    { label: "Annual preferred return (target profit rate)", value: "7-8%" },
+    { label: "Private equity exposure", value: "Up to 25%" },
+    { label: "Annual target profit rate", value: "7-8%" },
     { label: "Soft-money ratio", value: "4.0x" },
     { label: "Backend participation", value: "Up to 50%" },
   ],
-  note: "The annual preferred return of 7-8% is structured as a target profit rate contingent on fund performance, not a guaranteed coupon. The total investor backend pool is 50% per project. When Batin Lateef is the sole equity investor on a project, the fund captures up to 50% of backend participation. When co-investing, backend participation scales pro-rata to equity position.",
+  note: "The 7-8% annual target profit rate is contingent on fund performance, not a guaranteed coupon. There is no preferred return to limited partners. The total investor backend pool is 50% per project. When Batin Lateef is the sole equity investor on a project, the fund captures up to 50% of backend participation. When co-investing, backend participation scales pro-rata to equity position.",
+} as const;
+
+export const incentiveMap = {
+  id: "incentives",
+  eyebrow: "Jurisdictions",
+  heading: "Global Incentive Map",
+  intro:
+    "Countries offer production rebates to fuel employment. The programs are government-backed and have been pressure-tested for over 30 years. Batin Lateef leverages them across multiple jurisdictions to reduce risk.",
+  prompt:
+    "Choose a jurisdiction to read its headline rebate.",
+  detailsOnRequest: "Details on request",
+  listLabel: "Headline incentives by jurisdiction",
+  footnote:
+    "Equal Earth projection. Indicative headline rates only. Eligibility, caps, minimum spend, and certification requirements apply and vary by project.",
 } as const;
 
 export const portfolio = {
@@ -101,18 +115,16 @@ export const portfolio = {
   eyebrow: "Investment architecture",
   heading: "Structure. Velocity. Depth.",
   intro:
-    "Every slate runs on three layers: multi-jurisdictional incentive design, commercial genre packages, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
+    "The fund finances a genre-forward slate plus selective prestige titles. Every project runs on three layers: multi-jurisdictional incentive design, commercial genre packages, and character-led storytelling. Each layer is built on its own terms. Together, they form a single recoupment path.",
   items: [
     {
       id: "incentive-architecture",
       name: "Incentive Architecture",
       layer: "Structural",
-      category: "Canada · South Africa",
-      invested: "Active",
-      exited: "",
-      valuation: "Incentive-led",
+      category: "Canada · South Africa · Australia · Thailand · Ireland",
+      tag: "Incentive-led",
       description:
-        "Treaty-compliant co-production across Canada and South Africa to stack federal, provincial, and location rebates. Private equity sits at 20-30% of budget after soft money is locked.",
+        "Productions are structured across Canada, South Africa, Australia, Thailand, Ireland, and other jurisdictions to stack national incentives. Private equity sits at up to 25% of budget once soft-money eligibility is confirmed.",
       image: "/images/toronto-table-mountain-skyline.png",
     },
     {
@@ -120,11 +132,9 @@ export const portfolio = {
       name: "Genre Velocity",
       layer: "Commercial",
       category: "Action · Horror · Sci-fi · Thriller",
-      invested: "Active",
-      exited: "",
-      valuation: "Four-quadrant",
+      tag: "Genre-forward",
       description:
-        "Four-quadrant packages built for international streaming and theatrical windows. Presales, genre positioning, and delivery timelines are mapped before equity is called.",
+        "A genre-forward slate plus selective prestige titles, built for international streaming and theatrical windows. Presales and delivery timelines are mapped and secured before equity is committed.",
       image: "/images/film-soundstage.png",
     },
     {
@@ -132,9 +142,7 @@ export const portfolio = {
       name: "Batin Lateef Standard",
       layer: "Creative",
       category: "The Art of The Unsaid",
-      invested: "Active",
-      exited: "",
-      valuation: "Character-led",
+      tag: "Character-led",
       description:
         "Mainstream genre films where philosophical and ethical subtext lives in character choice, background, and moral compass. No tokenism. No lecture.",
       image: "/images/lateef-islamic-film.png",

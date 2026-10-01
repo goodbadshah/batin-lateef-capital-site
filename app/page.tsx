@@ -7,6 +7,7 @@ import { Metrics } from "@/components/site/Metrics";
 import { ManifestoQuote } from "@/components/site/ManifestoQuote";
 import { ParallaxMedia } from "@/components/site/ParallaxMedia";
 import { ClosingSection } from "@/components/site/ClosingSection";
+import { IncentiveMap } from "@/components/site/IncentiveMap";
 import { PortfolioCarousel } from "@/components/site/PortfolioCarousel";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { mediaStrips } from "@/lib/images";
@@ -24,6 +25,7 @@ export default function Home() {
           <ManifestoQuote />
           <ParallaxMedia strip={mediaStrips[2]} />
           <Commit />
+          <IncentiveMap />
           <HowItWorks />
           <Metrics />
           <ParallaxMedia strip={mediaStrips[3]} />

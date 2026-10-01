@@ -25,7 +25,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Batin Lateef Capital",
   description:
-    "Multi-jurisdictional media fund financing four-quadrant film and television with treaty-stacked production architecture.",
+    "Multi-jurisdictional media fund financing a genre-forward slate plus selective prestige titles with incentive-stacked production architecture.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

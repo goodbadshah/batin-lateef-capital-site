@@ -94,21 +94,7 @@ export function PortfolioCarousel() {
               >
                 <div className="border-t border-line pb-6 pt-5">
                   <p className="text-base leading-[1.85] text-muted">{entry.description}</p>
-                  <dl className="mt-6 space-y-3 text-sm">
-                    <div className="flex flex-wrap gap-x-2">
-                      <dt className="text-muted">Invested:</dt>
-                      <dd className="text-ink">{entry.invested}</dd>
-                      <span className="text-muted" aria-hidden>
-                        →
-                      </span>
-                      <dt className="text-muted">Exited:</dt>
-                      <dd className="text-ink">{entry.exited || ""}</dd>
-                    </div>
-                    <div className="flex gap-2">
-                      <dt className="text-muted">Exit valuation:</dt>
-                      <dd className="text-ink">{entry.valuation}</dd>
-                    </div>
-                  </dl>
+                  <p className="mt-6 text-sm text-ink">{entry.tag}</p>
                 </div>
               </div>
             </article>
