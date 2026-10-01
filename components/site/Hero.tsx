@@ -28,6 +28,7 @@ export function Hero() {
     const masks = stripeMasksRef.current.filter((mask): mask is HTMLDivElement => mask !== null);
     const overlay = stripeOverlayRef.current;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
 
     const hideOverlay = () => {
       if (overlay) overlay.style.display = "none";
@@ -50,20 +51,22 @@ export function Hero() {
         force3D: true,
       }, 0.1);
 
-      gsap.fromTo(
-        imageParallax,
-        { yPercent: -4 },
-        {
-          yPercent: 8,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.6,
+      if (!coarse) {
+        gsap.fromTo(
+          imageParallax,
+          { yPercent: -4 },
+          {
+            yPercent: 8,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top top",
+              end: "bottom top",
+              scrub: 0.6,
+            },
           },
-        },
-      );
+        );
+      }
 
       gsap.fromTo(
         copy.children,
@@ -89,7 +92,7 @@ export function Hero() {
     >
       <div
         ref={imageWrapRef}
-        className="absolute inset-x-0 top-0 h-[62vh] overflow-hidden lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[52%]"
+        className="absolute inset-x-0 top-0 h-[62svh] overflow-hidden lg:inset-y-0 lg:left-auto lg:right-0 lg:h-full lg:w-[52%]"
       >
         <div ref={imageParallaxRef} className="absolute inset-x-0 top-[-8%] h-[116%] w-full">
           <Image

@@ -35,7 +35,8 @@ export function GalleryFrame({
     if (!wrap || !inner) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (reduced || coarse) return;
 
     // Celeres-style drift: gentle scrub with speed as a subtle multiplier.
     // Oversized inner layer (see globals.css) prevents clipping at extremes.

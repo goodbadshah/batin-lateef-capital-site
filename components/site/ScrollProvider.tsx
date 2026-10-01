@@ -9,10 +9,16 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function ScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    // Mobile browser chrome (including Telegram's URL field) resizes the viewport
+    // without changing width. Refreshing ScrollTrigger on that resize jumps the page.
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    const coarse = window.matchMedia("(pointer: coarse)").matches;
+    if (reduced || coarse) return;
 
     const lenis = new Lenis({
+      syncTouch: false,
       duration: 1.15,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
@@ -28,13 +34,19 @@ export function ScrollProvider({ children }: { children: React.ReactNode }) {
     gsap.ticker.lagSmoothing(0);
 
     const refresh = () => ScrollTrigger.refresh();
+    let width = window.innerWidth;
+    const refreshOnWidthChange = () => {
+      if (window.innerWidth === width) return;
+      width = window.innerWidth;
+      refresh();
+    };
     window.addEventListener("load", refresh);
-    window.addEventListener("resize", refresh);
+    window.addEventListener("resize", refreshOnWidthChange);
     document.fonts?.ready.then(refresh);
 
     return () => {
       window.removeEventListener("load", refresh);
-      window.removeEventListener("resize", refresh);
+      window.removeEventListener("resize", refreshOnWidthChange);
       gsap.ticker.remove(tick);
       lenis.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

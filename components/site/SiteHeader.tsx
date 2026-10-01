@@ -41,7 +41,7 @@ export function SiteHeader() {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 flex h-14 items-center justify-between border-b border-white/10 bg-burgundy px-4 text-bone sm:px-6 lg:px-10"
+        className="sticky top-0 flex h-14 w-full items-center justify-between border-b border-white/10 bg-burgundy px-4 text-bone sm:px-6 lg:px-10"
         style={{ zIndex: z.modal + 1 }}
       >
         <Link href="/" className="font-serif text-xs tracking-[0.22em] sm:text-sm">
@@ -71,7 +71,7 @@ export function SiteHeader() {
       <aside
         id="site-drawer"
         aria-hidden={!menuOpen}
-        className={`fixed top-14 right-0 flex h-[calc(100dvh-3.5rem)] w-[min(20rem,88vw)] flex-col border-l border-white/10 bg-burgundy text-bone shadow-[-12px_0_40px_rgb(28_20_24_/_0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${menuOpen ? "translate-x-0" : "pointer-events-none translate-x-full"}`}
+        className={`fixed top-14 right-0 flex h-[calc(100svh-3.5rem)] w-[min(20rem,88vw)] flex-col border-l border-white/10 bg-burgundy text-bone shadow-[-12px_0_40px_rgb(28_20_24_/_0.12)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${menuOpen ? "translate-x-0" : "pointer-events-none translate-x-full"}`}
         style={{ zIndex: z.modal }}
       >
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-6 py-8">
