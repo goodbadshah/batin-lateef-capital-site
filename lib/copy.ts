@@ -18,7 +18,7 @@ export const hero = {
 export const about = {
   id: "about",
   lead: [
-    "For over 100 years, mainstream film and television have shown Muslims almost only as villains. That sustained dehumanization has made it possible to look away from decades of slaughter, suffering, and subjugation.",
+    "For over 100 years, mainstream film and television have shown Muslims almost exclusively as villains. That sustained dehumanization has made it possible to look away from decades of slaughter, suffering, and subjugation.",
     "Changing the narrative is a necessary ethical correction. It is also a viable commercial investment, because the films and shows audiences already watch are made across countries where longstanding government credits reduce the capital at risk. Batin Lateef places Muslim humanity inside these mainstream titles, subtly and over the long haul, toward empathetic visibility and a target profit.",
   ],
   heading: "We Leverage Treaties to Drive Visibility",
